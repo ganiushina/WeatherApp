@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Приложение погоды</string>
+    <string name="strings">Здесь будет погода</string>
+    <string name="dateTime">Выберите дату</string>
+    <string name="likeCity">Любимые города</string>
+</resources>
