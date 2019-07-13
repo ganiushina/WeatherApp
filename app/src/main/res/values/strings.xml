@@ -3,4 +3,24 @@
     <string name="strings">The Weather is here</string>
     <string name="dateTime">Choose date</string>
     <string name="likeCity">Chosen city</string>
+    <string name="textview">Samara</string>
+    <string name="textview1">Moscow</string>
+    <string name="textview2">Sankt-Perterburg</string>
+    <string name="textview_degree_samara">+35</string>
+    <string name="textview4">Add city</string>
+    <string name="todo">TODO</string>
+    <string name="check_degree">Degree</string>
+    <string name="checkbox">Degree</string>
+    <string name="check_wind">Wind</string>
+    <string name="check_wather">Wather</string>
+    <string name="check_wet">Wet</string>
+    <string name="textview_degree">Degree</string>
+    <string name="textview_wind">Wind</string>
+    <string name="textview_wather">Wather</string>
+    <string name="textview_wet">Wet</string>
+    <string name="buttonShow">Show</string>
+    <string name="textview_degree__val"></string>
+    <string name="textview_water_val"></string>
+    <string name="textview_wet_val"></string>
+    <string name="textview_wind_val"></string>
 </resources>

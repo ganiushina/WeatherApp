@@ -4,4 +4,24 @@
     <string name="strings">Здесь будет погода</string>
     <string name="dateTime">Выберите дату</string>
     <string name="likeCity">Любимые города</string>
+    <string name="textview">Самара</string>
+    <string name="textview1">Москва</string>
+    <string name="textview2">Санкт-Петербург</string>
+    <string name="textview_degree_samara">+35</string>
+    <string name="textview4">Добавить город</string>
+    <string name="todo">TODO</string>
+    <string name="check_degree">Температура</string>
+    <string name="checkbox">Температура</string>
+    <string name="check_wind">Ветер</string>
+    <string name="check_wather">Вода</string>
+    <string name="check_wet">Влажность</string>
+    <string name="textview_degree">Температура</string>
+    <string name="textview_wind">Ветер</string>
+    <string name="textview_wather">Температура воды</string>
+    <string name="textview_wet">Влажность</string>
+    <string name="buttonShow">Показать</string>
+    <string name="textview_degree__val"></string>
+    <string name="textview_water_val"></string>
+    <string name="textview_wet_val"></string>
+    <string name="textview_wind_val"></string>
 </resources>
