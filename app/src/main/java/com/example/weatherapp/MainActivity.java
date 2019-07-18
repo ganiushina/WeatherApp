@@ -1,10 +1,14 @@
 package com.example.weatherapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,12 +16,14 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    MainPresenter presenter;
-    ImageView imageViewButtonSamara;
-    ImageView imageViewButtonMoscow;
-    ImageView imageViewButtonPiter;
+    private static final int REQUEST_CODE_ACTIVITY2 = 1;
+    public static final String NAME = "degree";
 
-    String instanceState;
+    private MainPresenter presenter;
+    private ImageView imageViewButtonSamara;
+    private ImageView imageViewButtonMoscow;
+    private ImageView imageViewButtonPiter;
+    private ImageView imageViewButtonAddCity;
 
     private static final String TAG = "myLogs";
 
@@ -30,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         imageViewButtonSamara = findViewById(R.id.imageView);
         imageViewButtonMoscow = findViewById(R.id.imageView2);
         imageViewButtonPiter = findViewById(R.id.imageView3);
+        imageViewButtonAddCity = findViewById(R.id.imageView5);
 
         final CheckBox checkBoxDegree = findViewById(R.id.checkBox);
         final CheckBox checkBoxWind = findViewById(R.id.checkBox2);
@@ -43,6 +50,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setTemper(imageViewButtonSamara);
                 Log.d(TAG, "ButtonSamara");
+            }
+        });
+
+        Button go = findViewById(R.id.button);
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://ru.wikipedia.org/wiki/%D0%A1%D0%B0%D0%BC%D0%B0%D1%80%D0%B0";
+                Uri uri = Uri.parse(url);
+                Intent browser = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(browser);
             }
         });
 
@@ -92,11 +110,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setTemper(ImageView imageView){
-        setContentView(R.layout.activiti_degree);
-        TextView textView_degree = findViewById(R.id.textView10);
-        TextView textView_water = findViewById(R.id.textView11);
-        TextView textView_wet = findViewById(R.id.textView13);
-        TextView textView_wind = findViewById(R.id.textView14);
+        Intent intent = new Intent(getApplicationContext(), DegreeActivity.class);
+        TextView textViewCity = findViewById(R.id.editText3);
+        String newCity = textViewCity.getText().toString();
+        presenter.setNewCity(newCity);
         if (imageView == imageViewButtonSamara){
             presenter.setTemperature("+35");
             presenter.setWater("+23");
@@ -116,10 +133,8 @@ public class MainActivity extends AppCompatActivity {
             presenter.setWind("15 м/с");
 
         }
-        textView_degree.setText(presenter.getTemperature());
-        textView_water.setText(presenter.getWater());
-        textView_wet.setText(presenter.getWet());
-        textView_wind.setText(presenter.getWind());
+        intent.putExtra(NAME, presenter);
+        startActivityForResult(intent, REQUEST_CODE_ACTIVITY2);
     }
 
     @Override
@@ -156,6 +171,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Toast.makeText(getApplicationContext(), " onRestoreInstanceState()", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode != REQUEST_CODE_ACTIVITY2){
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+        if(resultCode == RESULT_OK){
+            TextView textViewCity = findViewById(R.id.editText3);
+            textViewCity.setText(data.getStringExtra("cityNew"));
+        }
     }
 
 }

@@ -1,6 +1,8 @@
 package com.example.weatherapp;
 
-public final class MainPresenter {
+import java.io.Serializable;
+
+public final class MainPresenter implements Serializable {
 
     private static MainPresenter instance = null;
 
@@ -11,10 +13,13 @@ public final class MainPresenter {
     private String wet;
     private String wind;
 
+    private String newCity;
+
     private boolean temperValue;
     private boolean waterValue;
     private boolean wetValue;
     private boolean windValue;
+
 
     public void setTemperValue(boolean temperValue) {
         this.temperValue = temperValue;
@@ -32,11 +37,20 @@ public final class MainPresenter {
         this.windValue = windValue;
     }
 
+    public String getNewCity() {
+        return newCity;
+    }
+
+    public void setNewCity(String newCity) {
+        this.newCity = newCity;
+    }
+
     private MainPresenter(){
         temperature = "";
         water = "";
         wet = "";
         wind = "";
+        newCity = "";
         temperValue = false;
         waterValue = false;
         wetValue = false;
