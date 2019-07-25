@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ACTIVITY2 = 1;
     public static final String NAME = "degree";
 
-    private MainPresenter presenter;
+  //  private MainPresenter presenter;
+    private Parcel parcel;
     private ImageView imageViewButtonSamara;
     private ImageView imageViewButtonMoscow;
     private ImageView imageViewButtonPiter;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
 
-        Log.d(TAG, "найдем View-элементы");
+
         imageViewButtonSamara = findViewById(R.id.imageView);
         imageViewButtonMoscow = findViewById(R.id.imageView2);
         imageViewButtonPiter = findViewById(R.id.imageView3);
@@ -43,7 +44,8 @@ public class MainActivity extends AppCompatActivity {
         final CheckBox checkBoxWater = findViewById(R.id.checkBox3);
         final CheckBox checkBoxWet = findViewById(R.id.checkBox4);
 
-        presenter = MainPresenter.getInstance();
+      //  presenter = MainPresenter.getInstance();
+        parcel = new Parcel();
 
         imageViewButtonSamara.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,28 +85,28 @@ public class MainActivity extends AppCompatActivity {
         checkBoxDegree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setTemperValue(checkBoxDegree.isChecked());
+                parcel.setTemperValue(checkBoxDegree.isChecked());
             }
         });
 
         checkBoxWind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setTemperValue(checkBoxWind.isChecked());
+                parcel.setTemperValue(checkBoxWind.isChecked());
             }
         });
 
         checkBoxWater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setTemperValue(checkBoxWater.isChecked());
+                parcel.setTemperValue(checkBoxWater.isChecked());
             }
         });
 
         checkBoxWet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.setTemperValue(checkBoxWet.isChecked());
+                parcel.setTemperValue(checkBoxWet.isChecked());
             }
         });
     }
@@ -113,27 +115,30 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), DegreeActivity.class);
         TextView textViewCity = findViewById(R.id.editText3);
         String newCity = textViewCity.getText().toString();
-        presenter.setNewCity(newCity);
+        parcel.setNewCity(newCity);
         if (imageView == imageViewButtonSamara){
-            presenter.setTemperature("+35");
-            presenter.setWater("+23");
-            presenter.setWet("80%");
-            presenter.setWind("5 м/с");
+            parcel.setTemperature("+35");
+            parcel.setWater("+23");
+            parcel.setWet("80%");
+            parcel.setWind("5 м/с");
+            parcel.setCityName("Самара");
         }
         if (imageView == imageViewButtonMoscow){
-            presenter.setTemperature("+25");
-            presenter.setWater("+20");
-            presenter.setWet("75%");
-            presenter.setWind("10 м/с");
+            parcel.setTemperature("+25");
+            parcel.setWater("+20");
+            parcel.setWet("75%");
+            parcel.setWind("10 м/с");
+            parcel.setCityName("Москва");
         }
         if (imageView.equals(findViewById(R.id.imageView2))){
-            presenter.setTemperature("+20");
-            presenter.setWater("+18");
-            presenter.setWet("90%");
-            presenter.setWind("15 м/с");
+            parcel.setTemperature("+20");
+            parcel.setWater("+18");
+            parcel.setWet("90%");
+            parcel.setWind("15 м/с");
+            parcel.setCityName("Санкт-Петербург");
 
         }
-        intent.putExtra(NAME, presenter);
+        intent.putExtra(NAME, parcel);
         startActivityForResult(intent, REQUEST_CODE_ACTIVITY2);
     }
 
