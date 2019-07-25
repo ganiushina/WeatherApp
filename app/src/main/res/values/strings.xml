@@ -23,4 +23,7 @@
     <string name="textview_water_val"></string>
     <string name="textview_wet_val"></string>
     <string name="textview_wind_val"></string>
+    <string name="cityName"></string>
+    <string name="gowiki">goWiki</string>
+    <string name="goback">goBack</string>
 </resources>
