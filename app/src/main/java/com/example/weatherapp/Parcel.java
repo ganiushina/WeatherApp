@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 public class Parcel implements Serializable {
 
-    private static Parcel instance = null;
-
-
     private String temperature;
     private String water;
     private String wet;
@@ -107,26 +104,5 @@ public class Parcel implements Serializable {
         this.wind = wind;
     }
 
-//    public Parcel(int imageIndex, String cityName) {
-//        this.imageIndex = imageIndex;
-//        this.cityName = cityName;
-//    }
+}
 
-
-    }
-//    private int imageIndex;
-//    private String cityName;
-//
-//    public int getImageIndex() {
-//        return imageIndex;
-//    }
-//
-//    public String getCityName() {
-//        return cityName;
-//    }
-//
-//    public Parcel(int imageIndex, String cityName) {
-//        this.imageIndex = imageIndex;
-//        this.cityName = cityName;
-//    }
-//}

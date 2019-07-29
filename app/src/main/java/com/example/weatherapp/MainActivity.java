@@ -2,10 +2,10 @@ package com.example.weatherapp;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,12 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     private static final int REQUEST_CODE_ACTIVITY2 = 1;
     public static final String NAME = "degree";
 
-  //  private MainPresenter presenter;
     private Parcel parcel;
     private ImageView imageViewButtonSamara;
     private ImageView imageViewButtonMoscow;
@@ -28,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "myLogs";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
+
 
 
         imageViewButtonSamara = findViewById(R.id.imageView);
@@ -44,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         final CheckBox checkBoxWater = findViewById(R.id.checkBox3);
         final CheckBox checkBoxWet = findViewById(R.id.checkBox4);
 
-      //  presenter = MainPresenter.getInstance();
         parcel = new Parcel();
 
         imageViewButtonSamara.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 
     public void setTemper(ImageView imageView){
         Intent intent = new Intent(getApplicationContext(), DegreeActivity.class);

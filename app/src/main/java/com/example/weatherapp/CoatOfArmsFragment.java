@@ -36,8 +36,8 @@ public class CoatOfArmsFragment extends Fragment {
         // Определить какой герб надо показать, и показать его
         View layout = inflater.inflate(R.layout.fragment_coat_of_arms, container, false);
 
-        ImageView coatOfArms = layout.findViewById(R.id.imageView);
-        TextView cityNameView = layout.findViewById(R.id.textView);
+        ImageView coatOfArms = layout.findViewById(R.id.imageView4);
+       // TextView cityNameView = layout.findViewById(R.id.textView);
 
         // Получить из ресурсов массив указателей на изображения гербов
         TypedArray imgs = getResources().obtainTypedArray(R.array.coatofarms_imgs);
@@ -45,7 +45,7 @@ public class CoatOfArmsFragment extends Fragment {
 
         // Выбрать по индексу подходящий
         coatOfArms.setImageResource(imgs.getResourceId(parcel.getImageIndex(), -1));
-        cityNameView.setText(parcel.getCityName());
+      //  cityNameView.setText(parcel.getCityName());
         return layout;
     }
 }

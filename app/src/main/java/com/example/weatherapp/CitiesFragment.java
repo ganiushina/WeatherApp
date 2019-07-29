@@ -74,12 +74,16 @@ public class CitiesFragment extends Fragment {
         LinearLayout layoutView = (LinearLayout) view;
         String[] cities = getResources().getStringArray(R.array.cities);
 
+        LayoutInflater ltInflater = getLayoutInflater();
+
         // В этом цикле создаем элемент TextView,
         // заполняем его значениями,
         // и добавляем на экран.
         // Кроме того, создаем обработку касания на элемент
         for (int i = 0; i < cities.length; i++) {
             String city = cities[i];
+
+           // View item = ltInflater.inflate(R.layout.item, layoutView, false);
             TextView tv = new TextView(getContext());
             tv.setText(city);
             tv.setTextSize(30);
