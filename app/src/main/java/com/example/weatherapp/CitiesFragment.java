@@ -74,7 +74,7 @@ public class CitiesFragment extends Fragment {
         LinearLayout layoutView = (LinearLayout) view;
         String[] cities = getResources().getStringArray(R.array.cities);
 
-        LayoutInflater ltInflater = getLayoutInflater();
+      //  LayoutInflater ltInflater = getLayoutInflater();
 
         // В этом цикле создаем элемент TextView,
         // заполняем его значениями,

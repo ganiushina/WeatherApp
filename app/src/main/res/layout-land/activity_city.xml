@@ -1,221 +1,343 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <ScrollView
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="imageClickSamara"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/sunny" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="imageClickMoscow"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@mipmap/cloudy" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:onClick="imageClickPiter"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@mipmap/rain_wather" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/textview"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/textview1"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="52dp"
+        android:text="@string/textview2"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="32dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/textview4"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/checkbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/check_wind"
+        app:layout_constraintStart_toEndOf="@+id/checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/check_wather"
+        app:layout_constraintStart_toEndOf="@+id/checkBox2"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="31dp"
+        android:text="@string/check_wet"
+        app:layout_constraintStart_toEndOf="@+id/checkBox3"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="88dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/gowiki"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView">
 
-        <android.support.constraint.ConstraintLayout
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/inputCity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="Город" />
+    </android.support.design.widget.TextInputLayout>
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="imageClickSamara"
-                app:layout_constraintBottom_toTopOf="@+id/imageView2"
-                app:layout_constraintEnd_toStartOf="@+id/textView2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/sunny" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="208dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="imageClickMoscow"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView3"
-                app:layout_constraintEnd_toStartOf="@+id/textView3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                app:srcCompat="@mipmap/cloudy" />
+    </android.support.v7.widget.RecyclerView>
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:onClick="imageClickPiter"
-                app:layout_constraintEnd_toStartOf="@+id/textView4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:srcCompat="@mipmap/rain_wather" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="28dp"
-                android:text="@string/textview"
-                android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="64dp"
-                android:text="@string/textview1"
-                android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="52dp"
-                android:text="@string/textview2"
-                android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="32dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/todo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                app:srcCompat="@android:drawable/ic_input_add" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="36dp"
-                android:text="@string/textview4"
-                android:textSize="24sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="64dp"
-                android:text="@string/checkbox"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="64dp"
-                android:text="@string/check_wind"
-                app:layout_constraintStart_toEndOf="@+id/checkBox"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-            <CheckBox
-                android:id="@+id/checkBox3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="64dp"
-                android:text="@string/check_wather"
-                app:layout_constraintStart_toEndOf="@+id/checkBox2"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="64dp"
-                android:text="@string/check_wet"
-                app:layout_constraintStart_toEndOf="@+id/checkBox3"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-            <EditText
-                android:id="@+id/editText3"
-                android:layout_width="135dp"
-                android:layout_height="37dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="28dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/cityName"
-                app:layout_constraintStart_toEndOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button"
-                android:layout_width="88dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="28dp"
-                android:text="@string/gowiki"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <!--<FrameLayout-->
-                <!--android:id="@+id/samara_umbrella"-->
-                <!--android:layout_width="156dp"-->
-                <!--android:layout_height="66dp"-->
-                <!--android:layout_marginStart="80dp"-->
-                <!--android:layout_marginTop="16dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:background="?android:attr/detailsElementBackground"-->
-                <!--app:layout_constraintStart_toEndOf="@+id/button"-->
-                <!--app:layout_constraintTop_toTopOf="parent" >-->
-
-                <!--<fragment-->
-                    <!--android:id="@+id/fragment"-->
-                    <!--android:name="com.example.weatherapp.CitiesFragment"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent" />-->
-            <!--</FrameLayout>-->
-
-            <!--<FrameLayout-->
-                <!--android:id="@+id/moscow_umbrella"-->
-                <!--android:layout_width="161dp"-->
-                <!--android:layout_height="61dp"-->
-                <!--android:layout_marginStart="176dp"-->
-                <!--android:layout_marginTop="32dp"-->
-                <!--android:background="?android:attr/detailsElementBackground"-->
-                <!--app:layout_constraintStart_toEndOf="@+id/textView3"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/samara_umbrella">-->
-
-                <!--<fragment-->
-                    <!--android:id="@+id/fragment2"-->
-                    <!--android:name="com.example.weatherapp.CitiesFragment"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent" />-->
-            <!--</FrameLayout>-->
-
-            <!--<FrameLayout-->
-                <!--android:id="@+id/piter_umbrella"-->
-                <!--android:layout_width="172dp"-->
-                <!--android:layout_height="68dp"-->
-                <!--android:layout_marginStart="88dp"-->
-                <!--android:layout_marginTop="32dp"-->
-                <!--android:background="?android:attr/detailsElementBackground"-->
-                <!--app:layout_constraintStart_toEndOf="@+id/textView4"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/moscow_umbrella">-->
-
-                <!--<fragment-->
-                    <!--android:id="@+id/fragment3"-->
-                    <!--android:name="com.example.weatherapp.CitiesFragment"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent" />-->
-            <!--</FrameLayout>-->
-
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
 </android.support.constraint.ConstraintLayout>
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto">-->
+
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+        <!--<android.support.constraint.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/imageView"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:onClick="imageClickSamara"-->
+                <!--app:layout_constraintBottom_toTopOf="@+id/imageView2"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/textView2"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent"-->
+                <!--app:srcCompat="@mipmap/sunny" />-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/imageView2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:onClick="imageClickMoscow"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--app:layout_constraintBottom_toTopOf="@+id/imageView3"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/textView3"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/imageView"-->
+                <!--app:srcCompat="@mipmap/cloudy" />-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/imageView3"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:onClick="imageClickPiter"-->
+                <!--app:layout_constraintEnd_toStartOf="@+id/textView4"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/imageView2"-->
+                <!--app:srcCompat="@mipmap/rain_wather" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/textView2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="15dp"-->
+                <!--android:layout_marginTop="28dp"-->
+                <!--android:text="@string/textview"-->
+                <!--android:textSize="24sp"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/imageView"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/textView3"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="12dp"-->
+                <!--android:layout_marginTop="64dp"-->
+                <!--android:text="@string/textview1"-->
+                <!--android:textSize="24sp"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/imageView2"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/textView4"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="12dp"-->
+                <!--android:layout_marginTop="52dp"-->
+                <!--android:text="@string/textview2"-->
+                <!--android:textSize="24sp"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/imageView3"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/textView3" />-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/imageView5"-->
+                <!--android:layout_width="32dp"-->
+                <!--android:layout_height="0dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:contentDescription="@string/todo"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/imageView3"-->
+                <!--app:srcCompat="@android:drawable/ic_input_add" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/textView6"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+
+                <!--android:layout_marginStart="16dp"-->
+                <!--android:layout_marginTop="36dp"-->
+                <!--android:text="@string/textview4"-->
+                <!--android:textSize="24sp"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/imageView5"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/checkBox"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="64dp"-->
+                <!--android:text="@string/checkbox"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/textView6" />-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/checkBox2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="64dp"-->
+                <!--android:text="@string/check_wind"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/checkBox"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/textView6" />-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/checkBox3"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="64dp"-->
+                <!--android:text="@string/check_wather"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/checkBox2"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/textView6" />-->
+
+            <!--<CheckBox-->
+                <!--android:id="@+id/checkBox4"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="8dp"-->
+                <!--android:layout_marginTop="64dp"-->
+                <!--android:text="@string/check_wet"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/checkBox3"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/textView6" />-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/editText3"-->
+                <!--android:layout_width="135dp"-->
+                <!--android:layout_height="37dp"-->
+                <!--android:layout_marginStart="4dp"-->
+                <!--android:layout_marginTop="28dp"-->
+                <!--android:ems="10"-->
+                <!--android:inputType="textPersonName"-->
+                <!--android:text="@string/cityName"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/textView6"-->
+                <!--app:layout_constraintTop_toBottomOf="@+id/textView4" />-->
+
+            <!--<com.google.android.material.button.MaterialButton-->
+                <!--android:id="@+id/button"-->
+                <!--android:layout_width="88dp"-->
+                <!--android:layout_height="40dp"-->
+                <!--android:layout_marginStart="16dp"-->
+                <!--android:layout_marginTop="28dp"-->
+                <!--android:text="@string/gowiki"-->
+                <!--app:layout_constraintStart_toEndOf="@+id/textView2"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <!--</android.support.constraint.ConstraintLayout>-->
+    <!--</ScrollView>-->
+<!--</android.support.constraint.ConstraintLayout>-->

@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity  {
@@ -32,7 +31,6 @@ public class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
-
 
 
         imageViewButtonSamara = findViewById(R.id.imageView);
@@ -113,13 +111,11 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-
-
     public void setTemper(ImageView imageView){
         Intent intent = new Intent(getApplicationContext(), DegreeActivity.class);
-        TextView textViewCity = findViewById(R.id.editText3);
-        String newCity = textViewCity.getText().toString();
-        parcel.setNewCity(newCity);
+       // TextView textViewCity = findViewById(R.id.editText3);
+       // String newCity = textViewCity.getText().toString();
+       // parcel.setNewCity(newCity);
         if (imageView == imageViewButtonSamara){
             parcel.setTemperature("+35");
             parcel.setWater("+23");
@@ -189,8 +185,8 @@ public class MainActivity extends AppCompatActivity  {
             return;
         }
         if(resultCode == RESULT_OK){
-            TextView textViewCity = findViewById(R.id.editText3);
-            textViewCity.setText(data.getStringExtra("cityNew"));
+           // TextView textViewCity = findViewById(R.id.editText3);
+           // textViewCity.setText(data.getStringExtra("cityNew"));
         }
     }
 

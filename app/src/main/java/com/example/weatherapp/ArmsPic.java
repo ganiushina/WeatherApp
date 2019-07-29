@@ -27,7 +27,7 @@ public class ArmsPic extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initList(view);
+    //    initList(view);
     }
 
     private void initList(View view) {

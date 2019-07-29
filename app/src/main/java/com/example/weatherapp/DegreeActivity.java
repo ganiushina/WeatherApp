@@ -1,17 +1,11 @@
 package com.example.weatherapp;
 
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import static com.example.weatherapp.MainActivity.NAME;
-
-import com.example.weatherapp.Parcel;
 
 public class DegreeActivity extends AppCompatActivity {
 
@@ -20,10 +14,7 @@ public class DegreeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_degree);
 
-      //  final MainPresenter presenter = (MainPresenter) getIntent().getExtras().getSerializable("degree");
-
         final Parcel parcel = (Parcel) getIntent().getExtras().getSerializable("degree");
-
 
         TextView textView_degree = findViewById(R.id.textView10);
         TextView textView_water = findViewById(R.id.textView11);
@@ -49,22 +40,6 @@ public class DegreeActivity extends AppCompatActivity {
 
         });
 
-//        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            // Если устройство перевернули в альбомную ориентацию, то надо эту activity закрыть
-//            finish();
-//            return;
-//        }
-//
-//        if (savedInstanceState == null) {
-//            // Если эта activity запускается первый раз (с каждым новым гербом первый раз)
-//            // то перенаправим параметр фрагменту
-//            CoatOfArmsFragment details = new CoatOfArmsFragment();
-//            details.setArguments(getIntent().getExtras());
-//            // Добавим фрагмент на activity
-//            getSupportFragmentManager()
-//                    .beginTransaction()
-//                    .replace(R.id.fragment_container, details).commit();
-//        }
     }
 
 
