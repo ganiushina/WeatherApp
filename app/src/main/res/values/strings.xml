@@ -23,4 +23,18 @@
     <string name="textview_water_val"></string>
     <string name="textview_wet_val"></string>
     <string name="textview_wind_val"></string>
+    <string name="cityName"></string>
+    <string name="gowiki">goWiki</string>
+    <string name="goback">goBack</string>
+    <string name="city"></string>
+
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="city_name">City Name</string>
+    <string name="degree">Degree</string>
+    <string name="_9_2">9.2</string>
+    <string name="_2019">2019</string>
+    <string name="dialog">Диалог</string>
 </resources>
