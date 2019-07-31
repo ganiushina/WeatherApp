@@ -31,4 +31,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="city_name">City Name</string>
+    <string name="degree">Degree</string>
+    <string name="_9_2">9.2</string>
+    <string name="_2019">2019</string>
 </resources>

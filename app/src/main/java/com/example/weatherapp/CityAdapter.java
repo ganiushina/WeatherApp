@@ -1,108 +1,53 @@
 package com.example.weatherapp;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-public class CityAdapter { //extends RecyclerView.Adapter<CityAdapter.ViewHolder>  {
-//
-//    private SocialDataSource  dataSource;
-//    private OnItemClickListener itemClickListener;  // Слушатель будет устанавливаться извне
-//
-//    // Передаем в конструктор источник данных
-//    // В нашем случае это массив, но может быть и запросом к БД
-//    public SocnetAdapter(SocialDataSource  dataSource){
-//        this.dataSource = dataSource;
-//    }
-//
-//    // Создать новый элемент пользовательского интерфейса
-//    // Запускается менеджером
-//    @NonNull
-//    @Override
-//    public SocnetAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-//        // Создаем новый элемент пользовательского интерфейса
-//        // Через Inflater
-//        View v = LayoutInflater.from(viewGroup.getContext())
-//                .inflate(R.layout.item, viewGroup, false);
-//        // Здесь можно установить всякие параметры
-//        ViewHolder vh = new ViewHolder(v);
-//        if (itemClickListener != null) {
-//            vh.setOnClickListener(itemClickListener);
-//        }
-//        Log.d("SocnetAdapter", "onCreateViewHolder");
-//        return vh;
-//    }
-//
-//    // Заменить данные в пользовательском интерфейсе
-//    // Вызывается менеджером
-//    @Override
-//    public void onBindViewHolder(@NonNull SocnetAdapter.ViewHolder viewHolder, int i) {
-//        // Получить элемент из источника данных (БД, интернет...)
-//        // Вынести на экран используя ViewHolder
-//        Soc soc = dataSource.getSoc(i);
-//        viewHolder.setData(soc.getDescription(), soc.getPicture(), soc.getLike());
-//        Log.d("SocnetAdapter", "onBindViewHolder");
-//    }
-//
-//    // Вернуть размер данных, вызывается менеджером
-//    @Override
-//    public int getItemCount() {
-//        return dataSource.size();
-//    }
-//
-//    // Интерфейс для обработки нажатий как в ListView
-//    public interface OnItemClickListener {
-//        void onItemClick(View view , int position);
-//    }
-//
-//    // Сеттер слушателя нажатий
-//    public void SetOnItemClickListener(OnItemClickListener itemClickListener){
-//        this.itemClickListener = itemClickListener;
-//    }
-//
-//    // Этот класс хранит связь между данными и элементами View
-//    // Сложные данные могут потребовать несколько View на
-//    // один пункт списка
-//    public class ViewHolder extends RecyclerView.ViewHolder {
-//        private TextView description;
-//        private ImageView image;
-//        private CheckBox like;
-//
-//        public ViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            description = itemView.findViewById(R.id.description);
-//            image = itemView.findViewById(R.id.imageView);
-//            like = itemView.findViewById(R.id.like);
-//        }
-//
-//        public void setOnClickListener(final OnItemClickListener listener){
-//            image.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // Получаем позицию адаптера
-//                    int adapterPosition = getAdapterPosition();
-//                    // Проверяем ее на корректность
-//                    if (adapterPosition == RecyclerView.NO_POSITION) return;
-//                    listener.onItemClick(v, adapterPosition);
-//                }
-//            });
-//        }
-//
-//        public void setData(String description, int picture, boolean like){
-//            getLike().setChecked(like);
-//            getImage().setImageResource(picture);
-//            getDescription().setText(description);
-//        }
-//
-//        public CheckBox getLike() {
-//            return like;
-//        }
-//        public TextView getDescription() {
-//            return description;
-//        }
-//        public ImageView getImage() {
-//            return image;
-//        }
-//    }
+import java.util.List;
 
+public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CustomViewHolder> {
+
+    private List<City> citys;
+
+    public class CustomViewHolder extends RecyclerView.ViewHolder {
+        public TextView cityName, year, degree;
+
+        public CustomViewHolder(View view) {
+            super(view);
+            cityName = view.findViewById(R.id.cityName);
+            degree = view.findViewById(R.id.degree);
+            year = view.findViewById(R.id.year);
+        }
+    }
+
+    public CityAdapter(List<City> citys) {
+        this.citys = citys;
+    }
+
+    @Override
+    public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.city_list, parent, false);
+
+        return new CustomViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(CustomViewHolder holder, int position) {
+        City city = citys.get(position);
+        holder.cityName.setText(city.getCityName());
+        holder.degree.setText(city.getDegree());
+        holder.year.setText(String.valueOf(city.getYear()));
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return citys.size();
+    }
 
 
 }
