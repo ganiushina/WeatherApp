@@ -5,15 +5,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements MyBottonSheetDialog.BottomSheetListener {
 
     private static final int REQUEST_CODE_ACTIVITY2 = 1;
     public static final String NAME = "degree";
@@ -25,6 +28,30 @@ public class MainActivity extends AppCompatActivity  {
     private ImageView imageViewButtonAddCity;
 
     private static final String TAG = "myLogs";
+
+    private TextView mTextMessage;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    mTextMessage.setText(R.string.title_home);
+                    return true;
+                case R.id.navigation_dashboard:
+                    mTextMessage.setText(R.string.title_dashboard);
+                    return true;
+                case R.id.navigation_notifications:
+                    mTextMessage.setText(R.string.title_notifications);
+                    MyBottonSheetDialog bottonSheetDialog = new MyBottonSheetDialog();
+                    bottonSheetDialog.show(getSupportFragmentManager(), "Диалог");
+                    return true;
+            }
+            return false;
+        }
+    };
 
 
     @Override
@@ -140,6 +167,11 @@ public class MainActivity extends AppCompatActivity  {
         }
         intent.putExtra(NAME, parcel);
         startActivityForResult(intent, REQUEST_CODE_ACTIVITY2);
+    }
+
+    @Override
+    public void onBottomClicked(String text) {
+        mTextMessage.setText(text);
     }
 
     @Override
