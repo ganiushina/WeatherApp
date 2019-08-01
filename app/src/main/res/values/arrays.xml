@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cities">
+        <item>Самара</item>
+        <item>Москва</item>
+        <item>Санкт-Петербург</item>
+
+    </string-array>
+
+    <integer-array name="coatofarms_imgs">
+        <item>@drawable/travelumbpella</item><!-- Самара -->
+        <item>@drawable/umbrella47</item><!-- герб Санкт-Петербурга -->
+        <item>@drawable/umbrellawithrain</item><!-- герб Екатеринбурга -->
+
+    </integer-array>
+</resources>
