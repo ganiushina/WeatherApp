@@ -8,6 +8,7 @@ public class Parcel implements Serializable {
     private String water;
     private String wet;
     private String wind;
+    private String pressure;
 
     private String newCity;
 
@@ -40,6 +41,14 @@ public class Parcel implements Serializable {
         this.newCity = newCity;
     }
 
+    public String getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(String pressure) {
+        this.pressure = pressure;
+    }
+
     public Parcel(){
         this.temperature = "";
         this.water = "";
@@ -50,6 +59,7 @@ public class Parcel implements Serializable {
         this.waterValue = false;
         this.wetValue = false;
         this.windValue = false;
+        this.pressure = "";
 
     }
 

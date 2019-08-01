@@ -43,11 +43,13 @@ public class DegreeActivity extends AppCompatActivity {
         TextView textView_wet = findViewById(R.id.textView13);
         TextView textView_wind = findViewById(R.id.textView14);
         TextView textView_city = findViewById(R.id.textView12);
+        TextView textView_pressure = findViewById(R.id.textView15);
         textView_degree.setText(parcel.getTemperature());
         textView_water.setText(parcel.getWater());
         textView_wet.setText(parcel.getWet());
         textView_wind.setText(parcel.getWind());
         textView_city.setText(parcel.getCityName());
+        textView_pressure.setText(parcel.getPressure());
 
 
         Button buttonBack = findViewById(R.id.buttonBack);

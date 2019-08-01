@@ -3,6 +3,7 @@ package com.example.weatherapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
@@ -15,6 +16,17 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.weatherapp.model.WeatherRequest;
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.stream.Collectors;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity implements MyBottonSheetDialog.BottomSheetListener {
 
@@ -137,34 +149,70 @@ public class MainActivity extends AppCompatActivity implements MyBottonSheetDial
     }
 
 
+    public void setTemper(final ImageView imageView){
 
-    public void setTemper(ImageView imageView){
-        Intent intent = new Intent(getApplicationContext(), DegreeActivity.class);
-       // TextView textViewCity = findViewById(R.id.editText3);
-       // String newCity = textViewCity.getText().toString();
-       // parcel.setNewCity(newCity);
+        String cityName = "";
         if (imageView == imageViewButtonSamara){
-            parcel.setTemperature("+35");
-            parcel.setWater("+23");
-            parcel.setWet("80%");
-            parcel.setWind("5 м/с");
-            parcel.setCityName("Самара");
+            cityName = "Samara";
         }
         if (imageView == imageViewButtonMoscow){
-            parcel.setTemperature("+25");
-            parcel.setWater("+20");
-            parcel.setWet("75%");
-            parcel.setWind("10 м/с");
-            parcel.setCityName("Москва");
+            cityName = "Moscow";
         }
-        if (imageView.equals(findViewById(R.id.imageView2))){
-            parcel.setTemperature("+20");
-            parcel.setWater("+18");
-            parcel.setWet("90%");
-            parcel.setWind("15 м/с");
-            parcel.setCityName("Санкт-Петербург");
+        if (imageView.equals(findViewById(R.id.imageView2))) {
+            cityName = "Sankt-Peterburg";
+        }
+        final String WEATHER_URL = String.format("https://api.openweathermap.org/data/2.5/weather?q=%s,ru&appid=", cityName);
 
+        try {
+            final URL uri = new URL(WEATHER_URL + BuildConfig.WEATHER_API_KEY);
+            final Handler handler = new Handler(); // Запоминаем основной поток
+            new Thread(new Runnable() {
+                public void run() {
+                    HttpsURLConnection urlConnection = null;
+                    try {
+                        urlConnection = (HttpsURLConnection) uri.openConnection();
+                        urlConnection.setRequestMethod("GET"); // установка метода получения данных -GET
+                        urlConnection.setReadTimeout(10000); // установка таймаута - 10 000 миллисекунд
+                        BufferedReader in = new BufferedReader(new InputStreamReader(urlConnection.getInputStream())); // читаем  данные в поток
+                        String result = getLines(in);
+                        // преобразование данных запроса в модель
+                        Gson gson = new Gson();
+                        final WeatherRequest weatherRequest = gson.fromJson(result, WeatherRequest.class);
+                        // Возвращаемся к основному потоку
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                displayWeather(weatherRequest);
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e(TAG, "Fail connection", e);
+                        e.printStackTrace();
+                    } finally {
+                        if (null != urlConnection) {
+                            urlConnection.disconnect();
+                        }
+                    }
+                }
+            }).start();
+        } catch (MalformedURLException e) {
+            Log.e(TAG, "Fail URI", e);
+            e.printStackTrace();
         }
+    }
+
+    private String getLines(BufferedReader in) {
+        return in.lines().collect(Collectors.joining("\n"));
+    }
+
+    private void displayWeather(WeatherRequest weatherRequest){
+        Intent intent = new Intent(getApplicationContext(), DegreeActivity.class);
+        parcel.setTemperature(String.format("%f2", weatherRequest.getMain().getTemp()));
+        parcel.setWater("+20");
+        parcel.setWet(String.format("%d", weatherRequest.getMain().getHumidity()));
+        parcel.setWind(String.format("%d", weatherRequest.getWind().getSpeed()));
+        parcel.setCityName(weatherRequest.getName());
+        parcel.setPressure(String.format("%d", weatherRequest.getMain().getPressure()));
         intent.putExtra(NAME, parcel);
         startActivityForResult(intent, REQUEST_CODE_ACTIVITY2);
     }

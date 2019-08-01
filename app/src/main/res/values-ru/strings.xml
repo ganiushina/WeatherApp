@@ -40,4 +40,6 @@
     <string name="_9_2">9.2</string>
     <string name="_2019">2019</string>
     <string name="dialog">Диалог</string>
+    <string name="pressure_val"></string>
+    <string name="pressure">Pressure</string>
 </resources>
